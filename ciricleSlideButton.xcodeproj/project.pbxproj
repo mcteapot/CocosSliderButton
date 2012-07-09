@@ -130,6 +130,9 @@
 		E2034B5C15A65D2500477687 /* select2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2034B5515A65D2500477687 /* select2.png */; };
 		E2034B5D15A65D2500477687 /* selectActive.png in Resources */ = {isa = PBXBuildFile; fileRef = E2034B5615A65D2500477687 /* selectActive.png */; };
 		E2034B5E15A65D2500477687 /* selectX.png in Resources */ = {isa = PBXBuildFile; fileRef = E2034B5715A65D2500477687 /* selectX.png */; };
+		E20C862915AA6DAD00A06DC0 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E20C862815AA6DAD00A06DC0 /* background.png */; };
+		E2FD568C15A7946B00E2C0AB /* buttonLayerSwichSound.caf in Resources */ = {isa = PBXBuildFile; fileRef = E2FD568B15A7946B00E2C0AB /* buttonLayerSwichSound.caf */; };
+		E2FD569015A7977C00E2C0AB /* CircleSliderButtonLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FD568F15A7977C00E2C0AB /* CircleSliderButtonLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -377,6 +380,10 @@
 		E2034B5515A65D2500477687 /* select2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = select2.png; path = Assets/png/select2.png; sourceTree = "<group>"; };
 		E2034B5615A65D2500477687 /* selectActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selectActive.png; path = Assets/png/selectActive.png; sourceTree = "<group>"; };
 		E2034B5715A65D2500477687 /* selectX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selectX.png; path = Assets/png/selectX.png; sourceTree = "<group>"; };
+		E20C862815AA6DAD00A06DC0 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Assets/png/background.png; sourceTree = "<group>"; };
+		E2FD568B15A7946B00E2C0AB /* buttonLayerSwichSound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = buttonLayerSwichSound.caf; path = Assets/audio/buttonLayerSwichSound.caf; sourceTree = "<group>"; };
+		E2FD568E15A7977C00E2C0AB /* CircleSliderButtonLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSliderButtonLayer.h; sourceTree = "<group>"; };
+		E2FD568F15A7977C00E2C0AB /* CircleSliderButtonLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSliderButtonLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -782,6 +789,8 @@
 			children = (
 				E2034B4415A6530300477687 /* DoubleAngleCircle.h */,
 				E2034B4515A6530300477687 /* DoubleAngleCircle.m */,
+				E2FD568E15A7977C00E2C0AB /* CircleSliderButtonLayer.h */,
+				E2FD568F15A7977C00E2C0AB /* CircleSliderButtonLayer.m */,
 			);
 			name = CircleSlider;
 			sourceTree = "<group>";
@@ -789,6 +798,8 @@
 		E2034B5015A65D1900477687 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E2FD568B15A7946B00E2C0AB /* buttonLayerSwichSound.caf */,
+				E20C862815AA6DAD00A06DC0 /* background.png */,
 				E2034B5115A65D2500477687 /* ioButtonOFF.png */,
 				E2034B5215A65D2500477687 /* ioButtonON.png */,
 				E2034B5315A65D2500477687 /* select0.png */,
@@ -867,6 +878,8 @@
 				E2034B5C15A65D2500477687 /* select2.png in Resources */,
 				E2034B5D15A65D2500477687 /* selectActive.png in Resources */,
 				E2034B5E15A65D2500477687 /* selectX.png in Resources */,
+				E2FD568C15A7946B00E2C0AB /* buttonLayerSwichSound.caf in Resources */,
+				E20C862915AA6DAD00A06DC0 /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,6 +989,7 @@
 				E2034B3915A6520B00477687 /* RootViewController.m in Sources */,
 				E2034B4615A6530300477687 /* DoubleAngleCircle.m in Sources */,
 				E2034B4F15A6541A00477687 /* CircleSliderButtonScene.m in Sources */,
+				E2FD569015A7977C00E2C0AB /* CircleSliderButtonLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "SimpleAudioEngine.h"
 
+#import "CircleSliderButtonLayer.h"
 @interface CircleSliderButtonScene : CCLayer {
+    
+    
+    CircleSliderButtonLayer *circleButton00;
+    
+    CCMenuItem *onItem; 
+    CCMenuItem *offItem;
     
 }
 
@@ -17,3 +25,4 @@
 +(CCScene *) scene;
 
 @end
+

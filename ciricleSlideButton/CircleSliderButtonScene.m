@@ -21,6 +21,7 @@
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
+    
 	
 	// return the scene
 	return scene;
@@ -32,20 +33,97 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
+        
+        CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
+        bg.anchorPoint = ccp(0, 0);
+        [self addChild:bg z:-10];
+        
+        // creat objects and inits
+//        circleButton00 = [[CircleSliderButtonLayer alloc] initWithButtons:4 AndDistance:110 AtPoint:CGPointMake(240, 160)];
+//        [self addChild:circleButton00 z:10];
+
+        
+        CCMenuItem *selectOn00 = [CCMenuItemImage itemFromNormalImage:@"select0.png" 
+                                         selectedImage:@"select0.png" target:nil selector:nil];
+        CCMenuItem *selectOff00 = [CCMenuItemImage itemFromNormalImage:@"select1.png" 
+                                          selectedImage:@"select1.png" target:nil selector:nil];
+        CCMenuItemToggle *selectItem00 = [CCMenuItemToggle itemWithTarget:self 
+                                                               selector:@selector(selectButtonTapped:) items:selectOn00, selectOff00, nil];
+        //selectItem00.position = ccp(50, 0);
+       
+        CCMenuItem *selectOn01 = [CCMenuItemImage itemFromNormalImage:@"select2.png" 
+                                                        selectedImage:@"select2.png" target:nil selector:nil];
+        CCMenuItem *selectOff01 = [CCMenuItemImage itemFromNormalImage:@"selectX.png" 
+                                                         selectedImage:@"selectX.png" target:nil selector:nil];
+        CCMenuItemToggle *selectItem01 = [CCMenuItemToggle itemWithTarget:self 
+                                                                 selector:@selector(selectButtonTapped:) items:selectOn01, selectOff01, nil];
+        
+        
+        CCMenuItem *selectOn02 = [CCMenuItemImage itemFromNormalImage:@"select2.png" 
+                                                        selectedImage:@"select2.png" target:nil selector:nil];
+        CCMenuItem *selectOff02 = [CCMenuItemImage itemFromNormalImage:@"selectX.png" 
+                                                         selectedImage:@"selectX.png" target:nil selector:nil];
+        CCMenuItemToggle *selectItem02 = [CCMenuItemToggle itemWithTarget:self 
+                                                                 selector:@selector(selectButtonTapped:) items:selectOn02, selectOff02, nil];
+        
+        //selectItem01.position = ccp(-50, 0);
+
+        
+        circleButton00 = [CircleSliderButtonLayer menuWithRaidus:110 andItems:selectItem00, selectItem01, nil];
+        [self addChild:circleButton00 z:10];
+        circleButton00.position = ccp(240, 160);
+        [circleButton00 openButtons];
+
+        
 		
 		// create and initialize a Label
+/*        
 		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Circle Slider" fontName:@"Marker Felt" fontSize:64];
         
 		// ask director the the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
         
 		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
-		
-		// add the label as a child to this Layer
-		[self addChild: label];
+		label.position =  ccp( size.width /2 , size.height/2 );        
+    	// add the label as a child to this Layer
+		[self addChild: label];    
+*/
+        // add ioButton
+    
+        onItem = [[CCMenuItemImage itemFromNormalImage:@"ioButtonON.png" 
+                                            selectedImage:@"ioButtonON.png" target:nil selector:nil] retain];
+        offItem = [[CCMenuItemImage itemFromNormalImage:@"ioButtonOFF.png" 
+                                             selectedImage:@"ioButtonOFF.png" target:nil selector:nil] retain];
+        CCMenuItemToggle *toggleItem = [CCMenuItemToggle itemWithTarget:self 
+                                                               selector:@selector(chipIOButtonTapped:) items:offItem, onItem, nil];
+        
+        //toggleItem.anchorPoint = ccp(0.5f, 0.5f);
+        //toggleItem.position = ccp(0, 0);
+        
+        CCMenu *toggleMenu = [CCMenu menuWithItems:toggleItem, nil];
+        [self addChild:toggleMenu z:2];
+        toggleMenu.anchorPoint = ccp(0.5f, 0.5f);
+        toggleMenu.position = ccp(240, 160);
+        
+        
+        // Preload Audio
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"buttonLayerSwichSound.caf"];
+        
+	
 	}
 	return self;
+}
+
+- (void) selectButtonTapped:(id)sender { 
+    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"buttonLayerSwichSound.caf"];
+    CCLOG(@"WORKING SELECT BITCHES");
+    
+}
+- (void) chipIOButtonTapped:(id)sender { 
+    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"buttonLayerSwichSound.caf"];
+
 }
 
 // on "dealloc" you need to release all your retained objects
@@ -54,6 +132,10 @@
 	// in case you have something to dealloc, do it in this method
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
+    
+    [[SimpleAudioEngine sharedEngine] unloadEffect:@"buttonLayerSwichSound.caf"];
+    [onItem release];
+    [offItem release];
 	
 	// don't forget to call "super dealloc"
 	[super dealloc];

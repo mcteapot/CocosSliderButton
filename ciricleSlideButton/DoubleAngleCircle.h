@@ -17,11 +17,13 @@
     CGFloat radiusFloat;
     
     NSInteger leaves;
+    NSInteger arraySize;
     
     CGFloat period;
+    CGFloat radian;
     CGFloat PI;
     
-    NSArray *circleCoordinates;
+    NSMutableArray *points;
 }
 
 // Properties 
@@ -29,10 +31,15 @@
 @property (nonatomic, assign) CGFloat radiusFloat;
 @property (nonatomic, assign) NSInteger leaves;
 @property (nonatomic, assign) CGFloat period;
-@property (nonatomic) NSArray *circleCoordinates;
+@property (nonatomic, readonly) NSMutableArray *points;
 
 
 // Methods Declarations
 -(id) initWithRadiusInt:(NSInteger) r withLeaves:(NSInteger) l;
+-(id) initWithRadiusFloat:(CGFloat) r withLeaves:(NSInteger) l;
+
+-(void) rotateDegreesTo:(CGFloat) d;
+-(void) createCoordinates;
 
 @end
+
