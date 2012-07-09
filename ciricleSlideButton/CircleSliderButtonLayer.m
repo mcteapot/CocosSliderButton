@@ -32,20 +32,6 @@
         // Initialization code here.
         CGSize screenSize = [CCDirector sharedDirector].winSize;
         
-        // Adding sprites to cache
-        
-        // Create sprite
-
-        // Adding quad parts to screen
-        
-        // Adding quad click locations
-        
-        // Standard method to create a button
-        
-        
-        // Preload Audio
-        
-        
         
     }
     
@@ -97,70 +83,6 @@
     return self;
 }
 
--(id) initWithButtons:(NSInteger) b AndDistance:(CGFloat) d AtPoint:(CGPoint) p{
-    
-    self = [super init];
-    if (self) {
-        CCLOG(@"%@: %@", NSStringFromSelector(_cmd), self);
-        
-        distance = d;
-        
-        totalButtons = b;
-        if (b % 2 == 0) {
-            leavestCount = b / 2;
-            evenButtons = YES;
-        } else {
-            leavestCount = b;
-            evenButtons = NO;
-        }
-        // Initialization code here.
-        CGSize screenSize = [CCDirector sharedDirector].winSize;
-        circleCoordinates = [[DoubleAngleCircle alloc] initWithRadiusFloat:distance withLeaves:leavestCount];
-        [circleCoordinates rotateDegreesTo:30];
-        
-        origin = p;
-        
-        // Adding sprites to cache
-        
-        // Create sprite
-        
-        for (int i = 0; i < circleCoordinates.points.count; i++) {
-            if (i == circleCoordinates.points.count - 1) { 
-                CCSprite *selectButton = [CCSprite spriteWithFile:@"selectX.png"];
-                [self addChild:selectButton];
-                selectButton.position = ccpAdd(origin, [[circleCoordinates.points objectAtIndex:i] CGPointValue]);
-            }else {
-                CCSprite *selectButton = [CCSprite spriteWithFile:[NSString stringWithFormat:@"select%i.png", i]];
-                [self addChild:selectButton];
-                selectButton.position = ccpAdd(origin, [[circleCoordinates.points objectAtIndex:i] CGPointValue]);
-            }
-        }
-        
-        
-        
-        // Adding quad parts to screen
-        
-        // Adding quad click locations
-        
-        // Standard method to create a button
-        
-        
-        // Preload Audio
-        
-        
-        
-    }
-    
-    [self schedule:@selector(step)];
-    
-    return self;
-
-}
-
-
-//-(void) onEnter {
-//
-//}
 
 
 #pragma mark -

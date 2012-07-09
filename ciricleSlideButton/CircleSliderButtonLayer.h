@@ -31,11 +31,9 @@
     
     
 }
-//+(id) menuWithRaidus:(CGFloat) r TotalButtons:(NSInteger) b AtPoint:(CGPoint) p andItems: (CCMenuItem*) item, ... NS_REQUIRES_NIL_TERMINATION;
+
 +(id) menuWithRaidus:(CGFloat) r andItems: (CCMenuItem*) item, ... NS_REQUIRES_NIL_TERMINATION;
 -(id) initWithItems:(CCMenuItem*) item VaList:(va_list) args AndRaidus:(CGFloat) r;
-
--(id) initWithButtons:(NSInteger) b AndDistance:(CGFloat) d AtPoint:(CGPoint) p;
 
 
 -(void) openButtons;

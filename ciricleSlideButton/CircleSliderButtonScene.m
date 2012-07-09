@@ -44,32 +44,34 @@
 
         
         CCMenuItem *selectOn00 = [CCMenuItemImage itemFromNormalImage:@"select0.png" 
-                                         selectedImage:@"select0.png" target:nil selector:nil];
-        CCMenuItem *selectOff00 = [CCMenuItemImage itemFromNormalImage:@"select1.png" 
-                                          selectedImage:@"select1.png" target:nil selector:nil];
+                                                        selectedImage:@"select0.png" target:nil selector:nil];
+        CCMenuItem *selectOff00 = [CCMenuItemImage itemFromNormalImage:@"select0Active.png" 
+                                                         selectedImage:@"select0Active.png" target:nil selector:nil];
         CCMenuItemToggle *selectItem00 = [CCMenuItemToggle itemWithTarget:self 
                                                                selector:@selector(selectButtonTapped:) items:selectOn00, selectOff00, nil];
-        //selectItem00.position = ccp(50, 0);
        
-        CCMenuItem *selectOn01 = [CCMenuItemImage itemFromNormalImage:@"select2.png" 
-                                                        selectedImage:@"select2.png" target:nil selector:nil];
-        CCMenuItem *selectOff01 = [CCMenuItemImage itemFromNormalImage:@"selectX.png" 
-                                                         selectedImage:@"selectX.png" target:nil selector:nil];
+        
+        CCMenuItem *selectOn01 = [CCMenuItemImage itemFromNormalImage:@"select1.png" 
+                                                        selectedImage:@"select1.png" target:nil selector:nil];
+        CCMenuItem *selectOff01 = [CCMenuItemImage itemFromNormalImage:@"select1Active.png" 
+                                                         selectedImage:@"select1Active.png" target:nil selector:nil];
         CCMenuItemToggle *selectItem01 = [CCMenuItemToggle itemWithTarget:self 
                                                                  selector:@selector(selectButtonTapped:) items:selectOn01, selectOff01, nil];
         
         
         CCMenuItem *selectOn02 = [CCMenuItemImage itemFromNormalImage:@"select2.png" 
                                                         selectedImage:@"select2.png" target:nil selector:nil];
-        CCMenuItem *selectOff02 = [CCMenuItemImage itemFromNormalImage:@"selectX.png" 
-                                                         selectedImage:@"selectX.png" target:nil selector:nil];
+        CCMenuItem *selectOff02 = [CCMenuItemImage itemFromNormalImage:@"select2Active.png" 
+                                                         selectedImage:@"select2Active.png" target:nil selector:nil];
         CCMenuItemToggle *selectItem02 = [CCMenuItemToggle itemWithTarget:self 
                                                                  selector:@selector(selectButtonTapped:) items:selectOn02, selectOff02, nil];
         
-        //selectItem01.position = ccp(-50, 0);
-
+        CCMenuItem *selectItemX = [CCMenuItemImage itemFromNormalImage:@"selectX.png" 
+                                                     selectedImage:@"selectXActive.png" 
+                                                            target:self selector:@selector(xButtonTapped:)];
         
-        circleButton00 = [CircleSliderButtonLayer menuWithRaidus:110 andItems:selectItem00, selectItem01, nil];
+        
+        circleButton00 = [CircleSliderButtonLayer menuWithRaidus:110 andItems:selectItem00, selectItem01, selectItem02, selectItemX, nil];
         [self addChild:circleButton00 z:10];
         circleButton00.position = ccp(240, 160);
         [circleButton00 openButtons];
@@ -117,12 +119,20 @@
 - (void) selectButtonTapped:(id)sender { 
     
     [[SimpleAudioEngine sharedEngine] playEffect:@"buttonLayerSwichSound.caf"];
-    CCLOG(@"WORKING SELECT BITCHES");
+    CCLOG(@"WORKING SELECT");
     
 }
 - (void) chipIOButtonTapped:(id)sender { 
     
     [[SimpleAudioEngine sharedEngine] playEffect:@"buttonLayerSwichSound.caf"];
+     CCLOG(@"WORKING IO");
+
+}
+
+- (void)xButtonTapped:(id)sender {
+    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"buttonLayerSwichSound.caf"];
+    CCLOG(@"WORKING X");
 
 }
 
