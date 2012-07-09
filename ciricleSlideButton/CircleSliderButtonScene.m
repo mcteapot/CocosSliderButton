@@ -37,7 +37,7 @@
         CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
         bg.anchorPoint = ccp(0, 0);
         [self addChild:bg z:-10];
-        
+
         // creat objects and inits
         
         CCMenuItem *selectOn00 = [CCMenuItemImage itemFromNormalImage:@"select0.png" 
@@ -66,7 +66,7 @@
         CCMenuItem *selectItemX = [CCMenuItemImage itemFromNormalImage:@"selectX.png" 
                                                      selectedImage:@"selectXActive.png" 
                                                             target:self selector:@selector(xButtonTapped:)];
-        
+    
         
         circleButton = [CircleSliderButtonLayer menuWithRaidus:110 andItems:selectItem00, selectItem01, selectItem02, selectItemX, nil];
         [self addChild:circleButton z:10];

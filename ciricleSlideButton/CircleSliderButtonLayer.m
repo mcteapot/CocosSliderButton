@@ -90,7 +90,7 @@
 
 -(void) openButtons {
     for (int i = 0; i < totalButtons; i++) {
-        
+        circleMenu.opacity = 0.0f;
         circleMenu.visible = YES;
         
         CCMenuItem *item = (CCMenuItem *)[circleMenu.children objectAtIndex:i];
@@ -111,17 +111,23 @@
             
             CGPoint p = [[circleCoordinates.points objectAtIndex:j] CGPointValue];
             CCMoveTo *moveItem = [CCMoveTo actionWithDuration:0.1f position:p];
+            CCFadeIn *fadeMenu = [CCFadeIn actionWithDuration:0.3f];
             [item runAction:moveItem];
+            [circleMenu runAction:fadeMenu];
             
             //item.position = [[circleCoordinates.points objectAtIndex:j] CGPointValue];
             [item setIsEnabled:YES];
         } else {
             CGPoint p = [[circleCoordinates.points objectAtIndex:i] CGPointValue];
             CCMoveTo *moveItem = [CCMoveTo actionWithDuration:0.1f position:p];
+            CCFadeIn *fadeMenu = [CCFadeIn actionWithDuration:0.2f];
             [item runAction:moveItem];
+            [circleMenu runAction:fadeMenu];
+            
+            
             
             //item.position = [[circleCoordinates.points objectAtIndex:i] CGPointValue];
-            //[item setIsEnabled:YES];
+            [item setIsEnabled:YES];
             [item performSelector:@selector(setIsEnabled:) withObject:self  afterDelay:0.1f];
         }
     }
@@ -139,6 +145,8 @@
     circleMenu.visible = NO;
 
 }
+
+
 
 -(void) degreeRotation:(CGFloat) d {
     [circleCoordinates rotateDegreesTo:d];
