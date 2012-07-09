@@ -103,7 +103,7 @@
         CGFloat radianCoordinate = radian + (_period * i);
         CGFloat x = (_radiusFloat * (cosf(radianCoordinate)));
         CGFloat y = (_radiusFloat * (sinf(radianCoordinate)));        
-        NSLog(@"X: %f, Y: %f", x, y);
+
         [_points addObject:[NSValue valueWithCGPoint:CGPointMake(x, y)]];
         NSValue *val = [_points objectAtIndex:i];
         CGPoint p = [val CGPointValue];

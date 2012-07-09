@@ -54,6 +54,7 @@
         circleMenu.anchorPoint = ccp(0.5f, 0.5f);
         circleMenu.position = ccp(0,0);
         
+        [self closeButtons];
         
         totalButtons = circleMenu.children.count;
         if (totalButtons == 1) {
@@ -69,12 +70,11 @@
             leavestCount = totalButtons;
             evenButtons = NO;
         }
+        
         // Initialization code here.
         CGSize screenSize = [CCDirector sharedDirector].winSize;
         
         circleCoordinates = [[DoubleAngleCircle alloc] initWithRadiusFloat:distance withLeaves:leavestCount];
-        
-        
         
     }
     
@@ -90,30 +90,67 @@
 
 -(void) openButtons {
     for (int i = 0; i < totalButtons; i++) {
+        
+        circleMenu.visible = YES;
+        
         CCMenuItem *item = (CCMenuItem *)[circleMenu.children objectAtIndex:i];
         CGPoint p = [[circleCoordinates.points objectAtIndex:i] CGPointValue];
         CCLOG(@"X: %f, Y: %f", p.x, p.y);
         if (totalButtons == 1) {
             int j = 0;
-            item.position = [[circleCoordinates.points objectAtIndex:j] CGPointValue];
+            
+            CGPoint p = [[circleCoordinates.points objectAtIndex:j] CGPointValue];
+            CCMoveTo *moveItem = [CCMoveTo actionWithDuration:0.1f position:p];
+            [item runAction:moveItem];
+            
+            //item.position = [[circleCoordinates.points objectAtIndex:j] CGPointValue];
+            [item setIsEnabled:YES];
             break;
         } else if (totalButtons == 2) {
             int j = i*2;
-            item.position = [[circleCoordinates.points objectAtIndex:j] CGPointValue];
+            
+            CGPoint p = [[circleCoordinates.points objectAtIndex:j] CGPointValue];
+            CCMoveTo *moveItem = [CCMoveTo actionWithDuration:0.1f position:p];
+            [item runAction:moveItem];
+            
+            //item.position = [[circleCoordinates.points objectAtIndex:j] CGPointValue];
+            [item setIsEnabled:YES];
         } else {
-            item.position = [[circleCoordinates.points objectAtIndex:i] CGPointValue];
+            CGPoint p = [[circleCoordinates.points objectAtIndex:i] CGPointValue];
+            CCMoveTo *moveItem = [CCMoveTo actionWithDuration:0.1f position:p];
+            [item runAction:moveItem];
+            
+            //item.position = [[circleCoordinates.points objectAtIndex:i] CGPointValue];
+            //[item setIsEnabled:YES];
+            [item performSelector:@selector(setIsEnabled:) withObject:self  afterDelay:0.1f];
         }
     }
+
 }
 
--(void) openButtonsWithDegreeRotation:(CGFloat) d {
-    [circleCoordinates rotateDegreesTo:d];
-    [self openButtons];
+-(void) closeButtons {
+    
+    for (int i = 0; i < totalButtons; i++) {
+        CCMenuItem *item = (CCMenuItem *)[circleMenu.children objectAtIndex:i]; 
+        item.position = CGPointZero;
+        [item setIsEnabled:NO];
+        
+    }
+    circleMenu.visible = NO;
 
+}
+
+-(void) degreeRotation:(CGFloat) d {
+    [circleCoordinates rotateDegreesTo:d];
+    
 }
 -(void) setButtons:(BOOL)enable {
     
     
+}
+
+-(CCArray *) items {
+    return circleMenu.children;
 }
 
 -(void) unloadAudioEffects {

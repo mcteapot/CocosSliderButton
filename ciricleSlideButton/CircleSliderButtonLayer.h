@@ -37,5 +37,7 @@
 
 
 -(void) openButtons;
--(void) openButtonsWithDegreeRotation:(CGFloat) d;
+-(void) closeButtons;
+-(void) degreeRotation:(CGFloat) d;
+-(CCArray *) items;
 @end

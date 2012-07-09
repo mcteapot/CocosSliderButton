@@ -14,7 +14,7 @@
 @interface CircleSliderButtonScene : CCLayer {
     
     
-    CircleSliderButtonLayer *circleButton00;
+    CircleSliderButtonLayer *circleButton;
     
     CCMenuItem *onItem; 
     CCMenuItem *offItem;
